@@ -7,7 +7,7 @@ import { useSession } from "@/lib/auth-client";
 
 export function DashboardSidebarPage() {
     const { data: sessionData } = useSession();
-    const user = sessionData?.user;
+        const user = sessionData?.user;
 
     const navItems = [
         { icon: House, label: "Dashboard" },
@@ -62,7 +62,6 @@ export function DashboardSidebarPage() {
 
     return (
         <>
-        
             <aside className="hidden w-64 shrink-0 border-r border-slate-200 dark:border-slate-800 p-4 lg:flex flex-col gap-6 bg-white dark:bg-[#0B1F3A]">
                 <div className="flex items-center gap-2 px-2">
                     <span className="text-2xl">🩸</span>

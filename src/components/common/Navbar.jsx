@@ -23,7 +23,7 @@ export default function Navbar() {
     const { theme, setTheme } = useTheme();
     const dropdownRef = useRef(null);
 
-    const { data: sessionData } = useSession();
+    const { data: sessionData} = useSession();
     const user = sessionData?.user;
 
     useEffect(() => {

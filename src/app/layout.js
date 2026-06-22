@@ -10,7 +10,7 @@ import Footer from "@/components/common/Footer";
 
 const robotoSlab = Roboto_Slab({
   subsets: ["latin"],
-  weight: ["300", "400", "700", "800", "900"]
+  weight: ["400", "700", "800", "900"]
 });
 
 export const metadata = {
@@ -27,9 +27,9 @@ export default function RootLayout({ children }) {
       <body className="min-h-full flex flex-col bg-white text-slate-900 dark:bg-[#061325] dark:text-white transition-colors duration-300">
         <Providers>
           <Navbar />
-          <main >
-            {children}
-          </main>
+           <main >
+             {children}
+           </main> 
           <Footer />
         </Providers>
       </body>
