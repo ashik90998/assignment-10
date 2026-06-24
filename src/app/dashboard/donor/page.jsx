@@ -59,9 +59,9 @@ export default function DonorDashboard() {
           onDelete={handleDelete}
         />
         <div className="mt-6 pt-4 border-t">
-          <Button as={Link} href="/dashboard/donor/requests" className="bg-red-600 text-white font-medium">
+          <Link href="/dashboard/donor/requests" className="bg-red-600 px-3 py-2 rounded-full text-white font-medium">
             View All Requests
-          </Button>
+          </Link>
         </div>
       </Card>
     </motion.div>

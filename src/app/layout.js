@@ -1,5 +1,6 @@
 const dns = require("node:dns");
 dns.setServers(["8.8.8.8", "8.8.4.4"]);
+
 import { Roboto_Slab } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/common/Navbar";

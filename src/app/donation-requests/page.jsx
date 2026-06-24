@@ -44,9 +44,9 @@ export default function DonationRequestsPage() {
                 <p>{req.hospitalName}</p>
                 <p>{req.donationDate} at {req.donationTime}</p>
               </div>
-              <Button as={Link} href={`/donation-requests/${req._id}`} className="w-full mt-4 bg-red-600 text-white font-semibold rounded-xl">
+              <Link href={`/donation-requests/${req._id}`} className="w-full mt-4 bg-red-600 py-2 px-3 text-white font-semibold rounded-full">
                 View Details
-              </Button>
+              </Link>
             </Card>
           </motion.div>
         ))}

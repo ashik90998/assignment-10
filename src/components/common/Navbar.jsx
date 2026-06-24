@@ -25,6 +25,7 @@ export default function Navbar() {
   const [mounted, setMounted] = useState(false);
   const { theme, setTheme } = useTheme();
   const dropdownRef = useRef(null);
+  
 
   useEffect(() => setMounted(true), []);
   useEffect(() => { setMenuOpen(false); setDropdownOpen(false); }, [pathname]);
@@ -41,16 +42,16 @@ export default function Navbar() {
 
   const links = user
     ? [
-        { name: "Home", href: "/" },
-        { name: "Donation Requests", href: "/donation-requests" },
-        { name: "Search Donors", href: "/search" },
-        { name: "Funding", href: "/funding" },
-      ]
+      { name: "Home", href: "/" },
+      { name: "Donation Requests", href: "/donation-requests" },
+      { name: "Search Donors", href: "/search" },
+      { name: "Funding", href: "/funding" },
+    ]
     : [
-        { name: "Home", href: "/" },
-        { name: "Donation Requests", href: "/donation-requests" },
-        { name: "Search Donors", href: "/search" },
-      ];
+      { name: "Home", href: "/" },
+      { name: "Donation Requests", href: "/donation-requests" },
+      { name: "Search Donors", href: "/search" },
+    ];
 
   const handleLogout = () => {
     logout();
@@ -91,7 +92,11 @@ export default function Navbar() {
             {user ? (
               <div className="relative" ref={dropdownRef}>
                 <button onClick={() => setDropdownOpen(!dropdownOpen)} className="flex items-center gap-1.5 p-1.5 pr-3 rounded-full">
-                  <Avatar src={user?.avatar} name={user?.name} className="w-9 h-9 bg-red-100 text-red-600" />
+                  <Avatar
+                    src={user?.image}
+                    name={user?.name}
+                    className="w-9 h-9 bg-red-100 text-red-600"
+                  />
                   <ChevronDown className={`w-4 h-4 transition-transform ${dropdownOpen ? "rotate-180" : ""}`} />
                 </button>
                 <AnimatePresence>

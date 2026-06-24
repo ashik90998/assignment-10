@@ -2,7 +2,8 @@
 
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { Card, Pagination, Select, ListBox } from "@heroui/react";
+import { Card, Select, ListBox } from "@heroui/react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import { api } from "@/lib/api";
 import DonationTable from "@/components/dashboard/DonationTable";
 
@@ -20,7 +21,9 @@ export default function MyRequestsPage() {
     setTotalPages(res.totalPages);
   };
 
-  useEffect(() => { fetchRequests().catch(console.error); }, [currentPage, statusFilter]);
+  useEffect(() => {
+    fetchRequests().catch(console.error);
+  }, [currentPage, statusFilter]);
 
   const handleStatusChange = async (id, status) => {
     await api.updateRequestStatus(id, status);
@@ -67,8 +70,40 @@ export default function MyRequestsPage() {
       <Card className="p-6 bg-white dark:bg-[#0B1F3A] border shadow-md">
         <DonationTable requests={requests} canManage viewBasePath="/donation-requests" onStatusChange={handleStatusChange} onDelete={handleDelete} />
         {totalPages > 1 && (
-          <div className="mt-6 flex justify-center">
-            <Pagination total={totalPages} page={currentPage} onChange={setCurrentPage} color="danger" size="sm" />
+          <div className="mt-6 flex justify-center items-center gap-3">
+            {/* Prev */}
+            <button
+              onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
+              disabled={currentPage === 1}
+              className="w-10 h-10 rounded-xl border bg-white shadow-sm disabled:opacity-40"
+            >
+              <ChevronLeft size={18} />
+            </button>
+
+            {/* Page Numbers */}
+            {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+              <button
+                key={page}
+                onClick={() => setCurrentPage(page)}
+                className={`w-10 h-10 rounded-xl font-medium transition ${currentPage === page
+                  ? "bg-red-500 text-white shadow-md"
+                  : "bg-transparent text-gray-700"
+                  }`}
+              >
+                {page}
+              </button>
+            ))}
+
+            {/* Next */}
+            <button
+              onClick={() =>
+                setCurrentPage((p) => Math.min(totalPages, p + 1))
+              }
+              disabled={currentPage === totalPages}
+              className="w-10 h-10 rounded-xl border bg-white shadow-sm disabled:opacity-40"
+            >
+              <ChevronRight size={18} />
+            </button>
           </div>
         )}
       </Card>
