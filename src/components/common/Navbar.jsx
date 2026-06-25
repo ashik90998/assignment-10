@@ -72,7 +72,8 @@ export default function Navbar() {
           </Link>
 
           <div className="hidden md:flex items-center gap-8">
-            {links.map((link) => {
+            {
+            links.map((link) => {
               const active = pathname === link.href;
               return (
                 <Link key={link.href} href={link.href} className={`relative font-semibold transition ${active ? "text-red-600" : dark ? "text-white hover:text-red-400" : "text-[#112240] hover:text-red-500"}`}>
@@ -80,27 +81,32 @@ export default function Navbar() {
                   {active && <motion.div layoutId="underline" className="absolute -bottom-1 left-0 right-0 h-[3px] bg-red-600 rounded-full" />}
                 </Link>
               );
-            })}
+            })
+            }
           </div>
 
           <div className="hidden md:flex items-center gap-5">
-            {mounted && (
+            {
+            mounted && (
               <motion.button whileTap={{ scale: 0.9 }} onClick={() => setTheme(dark ? "light" : "dark")} className={`p-3 rounded-full ${dark ? "bg-white/10" : "bg-slate-100"}`}>
                 {dark ? <Sun className="w-5 h-5 text-yellow-400" /> : <Moon className="w-5 h-5" />}
               </motion.button>
-            )}
-            {user ? (
+            )
+            }
+            {
+            user ? (
               <div className="relative" ref={dropdownRef}>
                 <button onClick={() => setDropdownOpen(!dropdownOpen)} className="flex items-center gap-1.5 p-1.5 pr-3 rounded-full">
                   <Avatar
-                    src={user?.image}
+                    src={user?.avatar}
                     name={user?.name}
                     className="w-9 h-9 bg-red-100 text-red-600"
                   />
                   <ChevronDown className={`w-4 h-4 transition-transform ${dropdownOpen ? "rotate-180" : ""}`} />
                 </button>
                 <AnimatePresence>
-                  {dropdownOpen && (
+                  {
+                  dropdownOpen && (
                     <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 10 }} className="absolute right-0 mt-3 w-56 rounded-2xl p-2 shadow-2xl border bg-white dark:bg-[#0F294A] dark:border-slate-800">
                       <div className="px-3 py-2 border-b dark:border-white/5">
                         <p className="text-xs text-slate-400">Signed in as</p>
@@ -113,40 +119,50 @@ export default function Navbar() {
                         <BiLogOut /> Logout
                       </button>
                     </motion.div>
-                  )}
+                  )
+                  }
                 </AnimatePresence>
               </div>
             ) : (
               <Link href="/login">
                 <button className="px-5 py-2 bg-red-600 hover:bg-red-700 text-white font-medium rounded-xl shadow-lg">Login</button>
               </Link>
-            )}
+            )
+            }
           </div>
 
           <button className="md:hidden p-2" onClick={() => setMenuOpen(!menuOpen)}>
-            {menuOpen ? <Xmark className="w-7 h-7 text-red-600" /> : <Bars className={`w-7 h-7 ${dark ? "text-white" : ""}`} />}
+            {
+            menuOpen ? <Xmark className="w-7 h-7 text-red-600" /> : <Bars className={`w-7 h-7 ${dark ? "text-white" : ""}`} />
+            }
           </button>
         </div>
       </div>
 
       <AnimatePresence>
-        {menuOpen && (
+        {
+        menuOpen && (
           <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: 0, opacity: 0 }} className="md:hidden border-t overflow-hidden">
             <div className="p-5 space-y-4">
-              {links.map((link) => (
+              {
+              links.map((link) => (
                 <Link key={link.href} href={link.href} className={`block py-2 font-semibold text-lg ${pathname === link.href ? "text-red-600" : ""}`}>{link.name}</Link>
-              ))}
-              {user ? (
+              ))
+              }
+              {
+              user ? (
                 <>
                   <Link href={dashboardHref} className="block py-2 font-semibold">Dashboard</Link>
                   <button onClick={handleLogout} className="w-full py-3 bg-red-600 text-white font-bold rounded-xl">Logout</button>
                 </>
               ) : (
                 <Link href="/login"><button className="w-full py-3 bg-red-600 text-white font-bold rounded-xl">Login</button></Link>
-              )}
+              )
+              }
             </div>
           </motion.div>
-        )}
+        )
+        }
       </AnimatePresence>
     </nav>
   );
