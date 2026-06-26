@@ -34,6 +34,8 @@ export default function Login() {
     }
   };
 
+  const toggleVisibility = () => setIsVisible(!isVisible);
+
   const inputStyle = {
     input: "text-slate-900 dark:text-white",
     label: "text-gray-700 dark:text-slate-300 font-medium",
@@ -62,17 +64,35 @@ export default function Login() {
                 <Label>Email</Label>
                 <Input placeholder="john@example.com" variant="bordered" classNames={inputStyle} />
               </TextField>
+
               <TextField isRequired name="password">
                 <Label>Password</Label>
                 <Input
                   type={isVisible ? "text" : "password"}
                   variant="bordered"
                   classNames={inputStyle}
-                  endContent={<button type="button" onClick={() => setIsVisible(!isVisible)}>{isVisible ? <EyeSlash className="w-4 h-4" /> : <Eye className="w-4 h-4" />}</button>}
+                  placeholder="Password"
+                  endContent={
+                    <button
+                      className="focus:outline-none flex items-center justify-center text-gray-400 hover:text-gray-600 dark:hover:text-slate-200"
+                      type="button"
+                      onClick={toggleVisibility}
+                      aria-label="toggle password visibility"
+                    >
+                      {
+                        isVisible ? (
+                          <EyeSlash className="w-5 h-5 pointer-events-none" />
+                        ) : (
+                          <Eye className="w-5 h-5 pointer-events-none" />
+                        )
+                      }
+                    </button>
+                  }
                 />
               </TextField>
-              <Button type="submit" disabled={loading} className="w-full h-11 bg-red-600 text-white font-semibold rounded-xl">
-                {loading ? "Signing In..." : "Sign In"}
+
+              <Button type="submit" isLoading={loading} className="w-full h-11 bg-red-600 text-white font-semibold rounded-xl">
+                Sign In
               </Button>
               <p className="text-center text-sm text-gray-500">
                 Don&apos;t have an account? <Link href="/register" className="text-red-500 hover:underline font-medium">Register here</Link>

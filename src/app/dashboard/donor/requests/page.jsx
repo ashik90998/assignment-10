@@ -69,43 +69,45 @@ export default function MyRequestsPage() {
 
       <Card className="p-6 bg-white dark:bg-[#0B1F3A] border shadow-md">
         <DonationTable requests={requests} canManage viewBasePath="/donation-requests" onStatusChange={handleStatusChange} onDelete={handleDelete} />
-        {totalPages > 1 && (
-          <div className="mt-6 flex justify-center items-center gap-3">
-            {/* Prev */}
-            <button
-              onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
-              disabled={currentPage === 1}
-              className="w-10 h-10 rounded-xl border bg-white shadow-sm disabled:opacity-40"
-            >
-              <ChevronLeft size={18} />
-            </button>
+        {
+          totalPages > 1 && (
+            <div className="mt-6 flex justify-center items-center gap-3">
 
-            {/* Page Numbers */}
-            {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
               <button
-                key={page}
-                onClick={() => setCurrentPage(page)}
-                className={`w-10 h-10 rounded-xl font-medium transition ${currentPage === page
-                  ? "bg-red-500 text-white shadow-md"
-                  : "bg-transparent text-gray-700"
-                  }`}
+                onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
+                disabled={currentPage === 1}
+                className="w-10 h-10 rounded-xl border bg-slate-100 shadow-sm disabled:opacity-40"
               >
-                {page}
+                <ChevronLeft size={18} />
               </button>
-            ))}
 
-            {/* Next */}
-            <button
-              onClick={() =>
-                setCurrentPage((p) => Math.min(totalPages, p + 1))
+              {
+                Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+                  <button
+                    key={page}
+                    onClick={() => setCurrentPage(page)}
+                    className={`w-10 h-10 rounded-xl font-medium transition ${currentPage === page
+                      ? "bg-red-500 text-white shadow-md"
+                      : "bg-transparent text-gray-700"
+                      }`}
+                  >
+                    {page}
+                  </button>
+                ))
               }
-              disabled={currentPage === totalPages}
-              className="w-10 h-10 rounded-xl border bg-white shadow-sm disabled:opacity-40"
-            >
-              <ChevronRight size={18} />
-            </button>
-          </div>
-        )}
+
+              <button
+                onClick={() =>
+                  setCurrentPage((p) => Math.min(totalPages, p + 1))
+                }
+                disabled={currentPage === totalPages}
+                className="w-10 h-10 rounded-xl border bg-white shadow-sm disabled:opacity-40"
+              >
+                <ChevronRight size={18} />
+              </button>
+            </div>
+          )
+          }
       </Card>
     </motion.div>
   );

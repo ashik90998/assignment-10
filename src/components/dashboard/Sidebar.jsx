@@ -12,6 +12,7 @@ import {
   ListCheck,
   Persons,
   Xmark,
+  ListOl,
 } from "@gravity-ui/icons";
 import { useAuth } from "@/providers/AuthProvider";
 import Image from "next/image";
@@ -28,10 +29,11 @@ const navByRole = {
     { icon: Persons, href: "/dashboard/admin/users", label: "All Users" },
     { icon: ListCheck, href: "/dashboard/admin/requests", label: "All Requests" },
     { icon: Person, href: "/dashboard/profile", label: "Profile" },
+    { icon: Plus, href: "/dashboard/admin/createNew", label: "Create Request" },
   ],
   volunteer: [
     { icon: House, href: "/dashboard/volunteer", label: "Dashboard" },
-    { icon: ListCheck, href: "/dashboard/volunteer/requests", label: "All Requests" },
+    { icon: ListCheck, href: "/dashboard/volunteer/requests", label: "My Requests" },
     { icon: Plus, href: "/dashboard/requests/create", label: "Create Request" },
     { icon: Person, href: "/dashboard/profile", label: "Profile" },
   ],
@@ -66,23 +68,25 @@ export function DashboardSidebarPage() {
       )}
 
       <nav className="flex flex-col gap-1.5 mt-4">
-        {navItems.map((item) => {
-          const isActive = pathname === item.href || pathname.startsWith(item.href + "/");
-          return (
-            <Link
-              href={item.href}
-              key={item.label}
-              onClick={() => setMobileOpen(false)}
-              className={`flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium transition-all duration-200 ${isActive
+        {
+          navItems.map((item) => {
+            const isActive = pathname === item.href || pathname.startsWith(item.href + "/");
+            return (
+              <Link
+                href={item.href}
+                key={item.label}
+                onClick={() => setMobileOpen(false)}
+                className={`flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium transition-all duration-200 ${isActive
                   ? "bg-red-50 text-red-600 dark:bg-red-950/30 dark:text-red-400"
                   : "text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-900"
-                }`}
-            >
-              <item.icon className="size-5" />
-              {item.label}
-            </Link>
-          );
-        })}
+                  }`}
+              >
+                <item.icon className="size-5" />
+                {item.label}
+              </Link>
+            );
+          })
+        }
       </nav>
     </div>
   );
@@ -108,32 +112,34 @@ export function DashboardSidebarPage() {
       </button>
 
       <AnimatePresence>
-        {mobileOpen && (
-          <>
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              onClick={() => setMobileOpen(false)}
-              className="lg:hidden fixed inset-0 bg-black/50 z-50"
-            />
-            <motion.aside
-              initial={{ x: -280 }}
-              animate={{ x: 0 }}
-              exit={{ x: -280 }}
-              transition={{ type: "spring", damping: 25 }}
-              className="lg:hidden fixed left-0 top-0 bottom-0 w-72 z-50 bg-white dark:bg-[#0B1F3A] border-r border-slate-200 dark:border-slate-800 p-4 flex flex-col"
-            >
-              <div className="flex items-center justify-between mb-4">
-                <span className="font-bold text-lg">SaveBlood</span>
-                <button onClick={() => setMobileOpen(false)}>
-                  <Xmark className="size-6" />
-                </button>
-              </div>
-              {navLinks}
-            </motion.aside>
-          </>
-        )}
+        {
+          mobileOpen && (
+            <>
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                onClick={() => setMobileOpen(false)}
+                className="lg:hidden fixed inset-0 bg-black/50 z-50"
+              />
+              <motion.aside
+                initial={{ x: -280 }}
+                animate={{ x: 0 }}
+                exit={{ x: -280 }}
+                transition={{ type: "spring", damping: 25 }}
+                className="lg:hidden fixed left-0 top-0 bottom-0 w-72 z-50 bg-white dark:bg-[#0B1F3A] border-r border-slate-200 dark:border-slate-800 p-4 flex flex-col"
+              >
+                <div className="flex items-center justify-between mb-4">
+                  <span className="font-bold text-lg">SaveBlood</span>
+                  <button onClick={() => setMobileOpen(false)}>
+                    <Xmark className="size-6" />
+                  </button>
+                </div>
+                {navLinks}
+              </motion.aside>
+            </>
+          )
+        }
       </AnimatePresence>
     </>
   );

@@ -7,8 +7,10 @@ import { Persons, ListCheck, Heart, CircleDollar } from "@gravity-ui/icons";
 import { api } from "@/lib/api";
 import StatCard from "@/components/dashboard/StatCard";
 import ProtectedRoute from "@/components/common/ProtectedRoute";
+import { useAuth } from "@/providers/AuthProvider";
 
 export default function AdminDashboard() {
+  const { user } = useAuth();
   const [stats, setStats] = useState();
   const [chartType, setChartType] = useState("daily");
 
@@ -24,7 +26,7 @@ export default function AdminDashboard() {
     <ProtectedRoute roles={["admin"]}>
       <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="p-6 space-y-6 max-w-[1600px] mx-auto">
         <div>
-          <h1 className="text-2xl font-bold">Admin Dashboard</h1>
+          <h1 className="text-3xl font-bold">Wellcome Mr, {user.name} </h1>
           <p className="text-sm text-slate-500">Overview of platform activity</p>
         </div>
 
