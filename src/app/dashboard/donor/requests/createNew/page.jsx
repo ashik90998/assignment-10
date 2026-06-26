@@ -84,7 +84,10 @@ export default function CreateNewRequestPage() {
             </div>
           </div>
 
-          <TextField isRequired><Label>Hospital Name</Label><Input isDisabled={isBlocked} value={formData.hospitalName} onChange={(e) => setFormData({ ...formData, hospitalName: e.target.value })} /></TextField>
+          <TextField isRequired>
+            <Label>Hospital Name</Label>
+            <Input isDisabled={isBlocked} value={formData.hospitalName} onChange={(e) => setFormData({ ...formData, hospitalName: e.target.value })} />
+          </TextField>
           <TextField isRequired><Label>Full Address</Label><Input isDisabled={isBlocked} value={formData.fullAddress} onChange={(e) => setFormData({ ...formData, fullAddress: e.target.value })} /></TextField>
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
@@ -95,8 +98,14 @@ export default function CreateNewRequestPage() {
                 <Select.Popover><ListBox className="p-1">{bloodGroups.map((bg) => <ListBox.Item key={bg.key} id={bg.key}>{bg.label}</ListBox.Item>)}</ListBox></Select.Popover>
               </Select>
             </div>
-            <TextField isRequired><Label>Donation Date</Label><Input type="date" isDisabled={isBlocked} value={formData.donationDate} onChange={(e) => setFormData({ ...formData, donationDate: e.target.value })} /></TextField>
-            <TextField isRequired><Label>Donation Time</Label><Input type="time" isDisabled={isBlocked} value={formData.donationTime} onChange={(e) => setFormData({ ...formData, donationTime: e.target.value })} /></TextField>
+            <TextField isRequired>
+              <Label>Donation Date</Label>
+              <Input type="date" isDisabled={isBlocked} value={formData.donationDate} onChange={(e) => setFormData({ ...formData, donationDate: e.target.value })} />
+            </TextField>
+            <TextField isRequired>
+              <Label>Donation Time</Label>
+              <Input type="time" isDisabled={isBlocked} value={formData.donationTime} onChange={(e) => setFormData({ ...formData, donationTime: e.target.value })} />
+            </TextField>
           </div>
 
           <TextField isRequired><Label>Request Message</Label><Input isDisabled={isBlocked} value={formData.requestMessage} onChange={(e) => setFormData({ ...formData, requestMessage: e.target.value })} /></TextField>
