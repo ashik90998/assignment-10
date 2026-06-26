@@ -13,8 +13,8 @@ import {
   Persons,
   Xmark,
 } from "@gravity-ui/icons";
-import { Avatar } from "@heroui/react";
 import { useAuth } from "@/providers/AuthProvider";
+import Image from "next/image";
 
 const navByRole = {
   donor: [
@@ -48,10 +48,13 @@ export function DashboardSidebarPage() {
     <div className="flex flex-col h-full">
       {user && (
         <div className="border-b border-slate-200 dark:border-slate-800 pb-4 flex items-center gap-3">
-          <Avatar
-            src={user?.avatar || undefined}
-            name={user?.name || "U"}
-            className="w-9 h-9 border border-red-500/20 text-xs font-bold bg-red-100 dark:bg-red-950/40 text-red-600 dark:text-red-400"
+          <Image
+            src={user?.avatar}
+            name={user?.name}
+            alt={user?.name || "User Profile"}
+            height={50}
+            width={50}
+            className="w-9 h-9 bg-red-100 rounded-full text-red-600"
           />
           <div className="flex flex-col truncate">
             <span className="text-sm font-semibold text-slate-800 dark:text-slate-200 truncate">
@@ -70,11 +73,10 @@ export function DashboardSidebarPage() {
               href={item.href}
               key={item.label}
               onClick={() => setMobileOpen(false)}
-              className={`flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium transition-all duration-200 ${
-                isActive
+              className={`flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium transition-all duration-200 ${isActive
                   ? "bg-red-50 text-red-600 dark:bg-red-950/30 dark:text-red-400"
                   : "text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-900"
-              }`}
+                }`}
             >
               <item.icon className="size-5" />
               {item.label}

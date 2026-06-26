@@ -6,6 +6,7 @@ import { useAuth } from "@/providers/AuthProvider";
 import { bloodGroups, districts, upazilas } from "@/components/geoData";
 import { api } from "@/lib/api";
 import { Card, TextField, Label, Input, Select, ListBox, Button, Form, Avatar } from "@heroui/react";
+import Image from "next/image";
 
 export default function ProfilePage() {
   const { user, refreshUser } = useAuth();
@@ -37,7 +38,14 @@ export default function ProfilePage() {
       <h2 className="text-2xl font-bold">My Profile</h2>
       <Card className="p-6 bg-white dark:bg-[#0B1F3A] border shadow-md">
         <div className="flex items-center gap-4 mb-6">
-          <Avatar src={user?.avatar} name={user?.name} className="w-20 h-20 text-xl" />
+          <Image
+            src={user?.avatar}
+            name={user?.name}
+            alt={user?.name || "User Profile"}
+            height={100}
+            width={200}
+            className=" bg-red-100 rounded-md text-red-600"
+          />
           <div>
             <p className="font-bold text-lg">{user?.name}</p>
             <p className="text-sm text-slate-500">{user?.email}</p>

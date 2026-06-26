@@ -9,7 +9,7 @@ import StatCard from "@/components/dashboard/StatCard";
 import ProtectedRoute from "@/components/common/ProtectedRoute";
 
 export default function AdminDashboard() {
-  const [stats, setStats] = useState(null);
+  const [stats, setStats] = useState();
   const [chartType, setChartType] = useState("daily");
 
   useEffect(() => {
