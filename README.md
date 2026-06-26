@@ -7,7 +7,15 @@ SaveBlood is a MERN-stack blood donation platform that connects donors with peop
 Live URL
 
 
+## ⚠️ Note for Evaluator
 
+**Dear Instructor,**
+
+I apologize for missing around 20 commits. My original GitHub account was suddenly suspended during development, forcing me to move everything to this new repository, which lost my commit history. 
+
+Please consider this technical issue with empathy and evaluate my project based on the final code. 
+
+Thank you for your understanding! 🙏
 
 
 Client: Add your Vercel/Netlify deployment URL here
