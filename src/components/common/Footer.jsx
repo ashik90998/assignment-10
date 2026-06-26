@@ -17,58 +17,118 @@ export default function Footer() {
   ];
 
   const socialIcons = [
-    { icon: LogoFacebook, href: "#" },
-    { icon: FaXTwitter, href: "#" },
-    { icon: BsGithub, href: "#" },
-    { icon: LiaLinkedin, href: "#" },
+    { icon: LogoFacebook, href: "#", color: "hover:bg-blue-600 hover:shadow-blue-600/50" },
+    { icon: FaXTwitter, href: "#", color: "hover:bg-slate-900 hover:shadow-slate-900/50" },
+    { icon: BsGithub, href: "#", color: "hover:bg-slate-800 hover:shadow-slate-800/50" },
+    { icon: LiaLinkedin, href: "#", color: "hover:bg-blue-700 hover:shadow-blue-700/50" },
   ];
 
   return (
-    <footer className="relative overflow-hidden bg-[#0b1f3a] text-white border-t mt-auto">
-      <div className="absolute top-0 left-0 w-72 h-72 bg-red-600/20 blur-[120px]" />
-      <div className="relative max-w-7xl mx-auto px-6 py-16">
-        <div className="grid md:grid-cols-3 gap-12">
-          <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-            <Link href="/" className="flex items-center gap-2">
-              <div className="w-10 h-10 rounded-full bg-red-600 flex items-center justify-center">
-                <Droplet className="text-white" />
-              </div>
-              <h2 className="text-2xl font-bold">Save<span className="text-red-600">Blood</span></h2>
+    <footer className="relative overflow-hidden bg-gradient-to-b from-[#0b1f3a] to-[#050e1a] text-white border-t border-slate-800/60 mt-auto">
+
+      {/* 🌟 CINEMATIC GRADIENT GLOWS */}
+      <div className="absolute top-0 left-10 w-96 h-96 bg-red-600/15 blur-[130px] rounded-full pointer-events-none" />
+      <div className="absolute bottom-0 right-10 w-80 h-80 bg-rose-500/10 blur-[120px] rounded-full pointer-events-none" />
+
+      <div className="relative max-w-7xl mx-auto px-6 py-16 z-10">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+
+          {/* LEFT: BRAND INFO */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="space-y-4"
+          >
+            <Link href="/" className="flex items-center gap-2 group w-fit">
+              <motion.div
+                whileHover={{ scale: 1.1, rotate: 15 }}
+                className="w-11 h-11 rounded-xl bg-gradient-to-br from-red-600 to-rose-600 flex items-center justify-center shadow-lg shadow-red-600/30"
+              >
+                <Droplet className="text-white size-5 animate-pulse" />
+              </motion.div>
+              <h2 className="text-2xl font-black tracking-tight">
+                Save<span className="text-red-500 group-hover:text-red-400 transition-colors">Blood</span>
+              </h2>
             </Link>
-            <p className="text-gray-300 mt-4 leading-relaxed">
-              Every drop counts. Connect donors with those in need and help save lives.
+            <p className="text-slate-400 text-sm font-medium leading-relaxed max-w-sm">
+              Every drop counts. Connect donors with those in need, build an emergency response network, and help save precious lives together.
             </p>
           </motion.div>
 
-          <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }}>
-            <h3 className="text-xl font-semibold mb-5 text-red-400">Quick Links</h3>
+          {/* MIDDLE: QUICK LINKS */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="space-y-5"
+          >
+            <h3 className="text-xs uppercase font-extrabold tracking-widest text-red-500 pl-0.5">Quick Links</h3>
             <div className="space-y-3">
               {links.map((link) => (
-                <Link key={link.href} href={link.href} className="block text-gray-300 hover:text-red-400 transition hover:translate-x-2">
-                  {link.name}
-                </Link>
+                <div key={link.href} className="overflow-hidden">
+                  <Link href={link.href} className="block w-fit">
+                    <motion.span
+                      whileHover={{ x: 8, color: "#f87171" }}
+                      transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                      className="block text-slate-300 text-sm font-semibold transition-colors"
+                    >
+                      {link.name}
+                    </motion.span>
+                  </Link>
+                </div>
               ))}
             </div>
           </motion.div>
 
-          <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }}>
-            <h3 className="text-xl font-semibold mb-5 text-red-400">Stay Connected</h3>
-            <p className="text-gray-300 mb-2">Emergency Hotline: +880 1712-345678</p>
-            <p className="text-gray-300">Email: support@saveblood.org</p>
+          {/* RIGHT: EMERGENCY CONTACT */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+            className="space-y-5"
+          >
+            <h3 className="text-xs uppercase font-extrabold tracking-widest text-red-500 pl-0.5">Stay Connected</h3>
+            <div className="space-y-2 text-sm font-medium text-slate-300">
+              <p className="flex items-center gap-2 group cursor-pointer">
+                <span>📞 Hotline:</span>
+                <span className="font-black text-white group-hover:text-red-400 transition-colors">+880 1712-345678</span>
+              </p>
+              <p className="flex items-center gap-2 group cursor-pointer">
+                <span>✉️ Email:</span>
+                <span className="font-black text-white group-hover:text-red-400 transition-colors">support@saveblood.org</span>
+              </p>
+            </div>
           </motion.div>
         </div>
 
-        <div className="border-t border-white/10 my-10" />
-        <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-          <p className="text-gray-400 text-sm">© 2026 SaveBlood. All rights reserved.</p>
-          <div className="flex gap-4">
+        {/* DIVIDER LINE */}
+        <div className="border-t border-slate-800/80 my-10" />
+
+        {/* BOTTOM FOOTER BAR */}
+        <div className="flex flex-col sm:flex-row justify-between items-center gap-6">
+          <p className="text-slate-500 text-xs font-bold tracking-wide">
+            © 2026 SaveBlood. All rights reserved.
+          </p>
+
+          {/* GLOWING SOCIAL ICONS */}
+          <div className="flex gap-3">
             {socialIcons.map((item, i) => (
-              <motion.a key={i} href={item.href} whileHover={{ scale: 1.15, rotate: 8 }} className="w-11 h-11 rounded-full border border-white/10 flex items-center justify-center">
+              <motion.a
+                key={i}
+                href={item.href}
+                whileHover={{ scale: 1.15, y: -4, rotate: 6 }}
+                whileTap={{ scale: 0.95 }}
+                className={`w-11 h-11 rounded-xl bg-slate-900/40 border border-slate-800 flex items-center justify-center text-slate-400 hover:text-white transition-all duration-300 hover:border-transparent hover:shadow-lg ${item.color}`}
+              >
                 <item.icon className="text-lg" />
               </motion.a>
             ))}
           </div>
         </div>
+
       </div>
     </footer>
   );
