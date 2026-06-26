@@ -26,14 +26,12 @@ export default function Footer() {
   return (
     <footer className="relative overflow-hidden bg-gradient-to-b from-[#0b1f3a] to-[#050e1a] text-white border-t border-slate-800/60 mt-auto">
 
-      {/* 🌟 CINEMATIC GRADIENT GLOWS */}
       <div className="absolute top-0 left-10 w-96 h-96 bg-red-600/15 blur-[130px] rounded-full pointer-events-none" />
       <div className="absolute bottom-0 right-10 w-80 h-80 bg-rose-500/10 blur-[120px] rounded-full pointer-events-none" />
 
       <div className="relative max-w-7xl mx-auto px-6 py-16 z-10">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
 
-          {/* LEFT: BRAND INFO */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -56,7 +54,6 @@ export default function Footer() {
             </p>
           </motion.div>
 
-          {/* MIDDLE: QUICK LINKS */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -82,7 +79,6 @@ export default function Footer() {
             </div>
           </motion.div>
 
-          {/* RIGHT: EMERGENCY CONTACT */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -104,16 +100,13 @@ export default function Footer() {
           </motion.div>
         </div>
 
-        {/* DIVIDER LINE */}
         <div className="border-t border-slate-800/80 my-10" />
 
-        {/* BOTTOM FOOTER BAR */}
         <div className="flex flex-col sm:flex-row justify-between items-center gap-6">
           <p className="text-slate-500 text-xs font-bold tracking-wide">
             © 2026 SaveBlood. All rights reserved.
           </p>
 
-          {/* GLOWING SOCIAL ICONS */}
           <div className="flex gap-3">
             {socialIcons.map((item, i) => (
               <motion.a

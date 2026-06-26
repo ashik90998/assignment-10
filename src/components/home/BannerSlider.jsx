@@ -39,14 +39,13 @@ export default function Banner() {
   ];
 
   useEffect(() => {
-    const timer = setInterval(() => setCurrentSlide((p) => (p + 1) % slides.length), 6000); // Cinematic 6 seconds interval
+    const timer = setInterval(() => setCurrentSlide((p) => (p + 1) % slides.length), 6000); 
     return () => clearInterval(timer);
   }, [slides.length]);
 
   return (
     <div className="relative w-full h-[65vh] md:h-[88vh] overflow-hidden bg-slate-950 flex items-center justify-center select-none">
 
-      {/* 🎬 CINEMATIC SLIDER BACKGROUND & OVERLAYS */}
       <AnimatePresence mode="wait">
         <motion.div
           key={currentSlide}
@@ -56,7 +55,6 @@ export default function Banner() {
           transition={{ duration: 1.2, ease: "easeInOut" }}
           className="absolute inset-0 w-full h-full"
         >
-          {/* Ken Burns Zoom & Pan Animation For Images */}
           <motion.div
             initial={{ scale: 1.15, x: -10, y: -5 }}
             animate={{ scale: 1, x: 0, y: 0 }}
@@ -65,16 +63,12 @@ export default function Banner() {
             style={{ backgroundImage: `url(${slides[currentSlide].image})` }}
           />
 
-          {/* Luxury Gradient Dark Masks */}
           <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/70 to-transparent z-[1]" />
           <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-slate-950/30 z-[1]" />
-
-          {/* Neon Subtle Light Leak */}
           <div className="absolute -top-40 -left-40 w-96 h-96 bg-red-600/15 rounded-full blur-[150px] z-[2] pointer-events-none" />
         </motion.div>
       </AnimatePresence>
 
-      {/* 🏷️ SLIDE CONTENT CONTAINER */}
       <div className="absolute inset-0 max-w-7xl mx-auto px-6 md:px-12 flex flex-col justify-center h-full z-10">
         <div className="max-w-3xl text-white">
           <AnimatePresence mode="wait">
@@ -90,7 +84,6 @@ export default function Banner() {
               }}
               className="space-y-6 md:space-y-8"
             >
-              {/* Animated Top Tiny Badge */}
               <motion.div
                 variants={{
                   hidden: { y: -15, opacity: 0 },
@@ -101,7 +94,6 @@ export default function Banner() {
                 <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse" /> Emergency SaveBlood Platform
               </motion.div>
 
-              {/* Title Animation */}
               <motion.h1
                 variants={{
                   hidden: { y: 30, opacity: 0, filter: "blur(5px)" },
@@ -116,7 +108,6 @@ export default function Banner() {
                 ))}
               </motion.h1>
 
-              {/* Description Animation */}
               <motion.p
                 variants={{
                   hidden: { y: 25, opacity: 0 },
@@ -127,7 +118,6 @@ export default function Banner() {
                 {slides[currentSlide].description}
               </motion.p>
 
-              {/* Action Buttons Animation */}
               <motion.div
                 variants={{
                   hidden: { y: 20, opacity: 0 },
@@ -159,7 +149,6 @@ export default function Banner() {
         </div>
       </div>
 
-      {/* 🔢 LUXURY PROGRESS INDICATOR DOTS */}
       <div className="absolute bottom-8 left-0 right-0 z-20 flex justify-center items-center gap-4">
         {slides.map((_, index) => {
           const isActive = currentSlide === index;
@@ -171,7 +160,6 @@ export default function Banner() {
               aria-label={`Go to slide ${index + 1}`}
             >
               <div className="h-2.5 rounded-full bg-white/20 overflow-hidden transition-all duration-500 w-2.5 group-hover:w-6 group-hover:bg-white/40 relative">
-                {/* Active Pill Smooth Stretch Fill Effect */}
                 {isActive && (
                   <motion.div
                     layoutId="activeIndicator"

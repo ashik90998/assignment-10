@@ -29,7 +29,6 @@ export default function ContactUs() {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
-    // Background Fluid Animation Variants
     const bgParticleVariants = {
         animate1: {
             x: [0, 80, -40, 0],
@@ -55,7 +54,6 @@ export default function ContactUs() {
     return (
         <section className="py-20 bg-gradient-to-br from-slate-50 via-white to-red-50/20 dark:from-[#030712] dark:via-[#0B1F3A] dark:to-[#020617] transition-colors duration-500 relative overflow-hidden min-h-screen flex items-center">
 
-            {/* 🌟 PREMIUM BACKGROUND PARTICLES */}
             <div className="absolute inset-0 pointer-events-none overflow-hidden opacity-30 dark:opacity-25">
                 <motion.div variants={bgParticleVariants} animate="animate1" className="absolute -left-20 top-10 w-96 h-96 bg-red-400 dark:bg-red-900 rounded-full blur-[120px]" />
                 <motion.div variants={bgParticleVariants} animate="animate2" className="absolute -right-20 bottom-10 w-96 h-96 bg-rose-300 dark:bg-rose-950 rounded-full blur-[130px]" />
@@ -63,7 +61,6 @@ export default function ContactUs() {
 
             <div className="max-w-7xl mx-auto px-6 relative z-10 w-full">
 
-                {/* 🏷️ HEADER SECTION */}
                 <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
                     <motion.span
                         initial={{ opacity: 0, scale: 0.8 }}
@@ -93,7 +90,6 @@ export default function ContactUs() {
 
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
 
-                    {/* LEFT SIDE: INFO CARDS */}
                     <motion.div
                         initial={{ opacity: 0, x: -30 }}
                         whileInView={{ opacity: 1, x: 0 }}
@@ -128,7 +124,6 @@ export default function ContactUs() {
                         </Card>
                     </motion.div>
 
-                    {/* RIGHT SIDE: CONTACT FORM */}
                     <motion.div
                         initial={{ opacity: 0, x: 30 }}
                         whileInView={{ opacity: 1, x: 0 }}
@@ -143,7 +138,6 @@ export default function ContactUs() {
                             <div className="absolute top-0 left-0 w-full h-[3px] bg-gradient-to-r from-transparent via-red-500 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                {/* Name Input */}
                                 <div className="space-y-2">
                                     <label className="text-xs uppercase font-extrabold tracking-wider text-slate-400 dark:text-slate-500 block pl-1">Your Name</label>
                                     <input
@@ -156,7 +150,6 @@ export default function ContactUs() {
                                         className="w-full px-4 py-3 rounded-xl bg-white/50 dark:bg-slate-900/40 border border-slate-200 dark:border-slate-800 focus:outline-none focus:border-red-500 dark:focus:border-red-500 dark:text-slate-200 transition-all text-sm font-medium shadow-inner"
                                     />
                                 </div>
-                                {/* Email Input */}
                                 <div className="space-y-2">
                                     <label className="text-xs uppercase font-extrabold tracking-wider text-slate-400 dark:text-slate-500 block pl-1">Email Address</label>
                                     <input
@@ -171,7 +164,6 @@ export default function ContactUs() {
                                 </div>
                             </div>
 
-                            {/* Subject Input */}
                             <div className="space-y-2">
                                 <label className="text-xs uppercase font-extrabold tracking-wider text-slate-400 dark:text-slate-500 block pl-1">Subject</label>
                                 <input
@@ -185,7 +177,6 @@ export default function ContactUs() {
                                 />
                             </div>
 
-                            {/* Message Textarea */}
                             <div className="space-y-2">
                                 <label className="text-xs uppercase font-extrabold tracking-wider text-slate-400 dark:text-slate-500 block pl-1">Message</label>
                                 <textarea
@@ -199,7 +190,6 @@ export default function ContactUs() {
                                 />
                             </div>
 
-                            {/* Submit Button */}
                             <motion.div whileTap={{ scale: 0.98 }}>
                                 <button
                                     type="submit"
@@ -223,7 +213,6 @@ export default function ContactUs() {
     );
 }
 
-// Helper Simple Wrapper to bypass NextUI dependency if not initialized
 const Card = ({ children, className }) => (
     <div className={`shadow-lg bg-white dark:bg-[#0B1F3A] ${className}`}>{children}</div>
 );
