@@ -32,7 +32,7 @@ const navByRole = {
   ],
   volunteer: [
     { icon: House, href: "/dashboard/volunteer", label: "Dashboard" },
-    { icon: ListCheck, href: "/dashboard/volunteer/requests", label: "My Requests" },
+    { icon: ListCheck, href: "/dashboard/volunteer/requests", label: "All Requests" },
     { icon: Plus, href: "/dashboard/requests/create", label: "Create Request" },
     { icon: Person, href: "/dashboard/profile", label: "Profile" },
   ],
